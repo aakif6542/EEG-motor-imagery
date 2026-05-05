@@ -1,6 +1,6 @@
-# 🧠 EEG Motor Imagery Classification: Cross-Subject Generalization Study
+#  EEG Motor Imagery Classification: Cross-Subject Generalization Study
 
-## 📌 Overview
+##  Overview
 
 This project investigates **cross-subject generalization in EEG-based motor imagery classification**, a key challenge in Brain-Computer Interface (BCI) systems.
 
@@ -16,7 +16,7 @@ The goal is to understand:
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 * **Dataset:** BCI Competition IV 2a
 * **Subjects:** 9
@@ -28,7 +28,7 @@ The goal is to understand:
 
 ---
 
-## ⚙️ Pipeline
+##  Pipeline
 
 ```
 Raw EEG → Preprocessing → Model → Evaluation
@@ -46,7 +46,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ---
 
-## 🧠 Models Compared
+##  Models Compared
 
 ### 1. CSP + SVM
 
@@ -73,7 +73,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ---
 
-## 🧪 Experiments Conducted
+##  Experiments Conducted
 
 ### 🔹 Experiment 1: Baseline (0–4 sec window)
 
@@ -99,9 +99,9 @@ apply_aug = True
 
 | Model  | Result                  |
 | ------ | ----------------------- |
-| CNN    | ❌ No improvement        |
-| EEGNet | ✅ Improved (~0.85 peak) |
-| CSP    | ➖ No change             |
+| CNN    |  No improvement        |
+| EEGNet |  Improved (~0.85 peak) |
+| CSP    |  No change             |
 
 ---
 
@@ -121,15 +121,15 @@ tmax = 3.5
 
 | Model     | Accuracy |
 | --------- | -------- |
-| CSP + SVM | ~0.77 🔥 |
-| CNN       | ~0.49 ❌  |
+| CSP + SVM | ~0.77  |
+| CNN       | ~0.49   |
 | EEGNet    | ~0.76    |
 
 ---
 
-## 📈 Key Findings
+##  Key Findings
 
-### 🔥 1. CNN fails in cross-subject setting
+###  1. CNN fails in cross-subject setting
 
 * Severe overfitting observed
 * Performance remains near random (~50%)
@@ -137,7 +137,7 @@ tmax = 3.5
 
 ---
 
-### 🔥 2. EEGNet shows strong generalization
+###  2. EEGNet shows strong generalization
 
 * Consistent performance across experiments
 * Benefits from augmentation
@@ -145,27 +145,27 @@ tmax = 3.5
 
 ---
 
-### 🔥 3. CSP remains competitive
+###  3. CSP remains competitive
 
 * Significant improvement with proper preprocessing
 * Sensitive to signal quality and time window selection
 
 ---
 
-### 🔥 4. Preprocessing matters
+###  4. Preprocessing matters
 
 * Bandpass filtering and time-window selection significantly affect performance
 * Proper signal conditioning can boost traditional methods
 
 ---
 
-## 🧠 Core Insight
+##  Core Insight
 
 > **Generic CNN models fail to generalize in cross-subject EEG classification, while EEGNet demonstrates robust performance due to its domain-specific architecture.**
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 EEGNet-Project/
@@ -185,7 +185,7 @@ EEGNet-Project/
 
 ---
 
-## ▶️ How to Run
+##  How to Run
 
 ```bash
 python train.py
@@ -193,7 +193,7 @@ python train.py
 
 ---
 
-## 📌 Future Work
+##  Future Work
 
 * Evaluate on additional EEG datasets (e.g., PhysioNet, DEAP)
 * Improve CNN architecture for better generalization
@@ -202,7 +202,7 @@ python train.py
 
 ---
 
-## ⭐ Final Note
+##  Final Note
 
 This project focuses on **understanding model behavior**, not just maximizing accuracy.
 
@@ -214,4 +214,4 @@ It highlights the importance of:
 
 ---
 
-💥 *Designed as a research-oriented study for BCI and EEG decoding.*
+ *Designed as a research-oriented study for BCI and EEG decoding.*
