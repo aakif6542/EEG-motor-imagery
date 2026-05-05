@@ -48,6 +48,8 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ##  Models Compared
 
+![Model Comparison](./images/modelcomparison.png)
+
 ### 1. CSP + SVM
 
 * Handcrafted spatial filtering
@@ -61,12 +63,16 @@ Raw EEG → Preprocessing → Model → Evaluation
 * Learns features automatically
 * No EEG-specific inductive bias
 
+![CNN Accuracy](./images/cnnaccuracy.png)
+
 ---
 
 ### 3. EEGNet
 
 * Lightweight CNN designed for EEG
 * Learns temporal and spatial features
+
+![EEGNet Accuracy](./images/eegnetaccuracy.png)
 
 ---
 
