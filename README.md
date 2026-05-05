@@ -10,9 +10,8 @@ We conduct a **controlled experimental comparison** between:
 * **CNN** (generic deep learning)
 * **EEGNet** (EEG-specific deep learning model)
 
-The goal is to understand:
-
-> *Do deep learning models generalize better than traditional approaches in EEG classification?*
+>  **Objective:**
+> To evaluate whether deep learning models can generalize across subjects and how architecture design impacts performance.
 
 ---
 
@@ -21,7 +20,7 @@ The goal is to understand:
 * **Dataset:** BCI Competition IV 2a
 * **Subjects:** 9
 * **Task:** Motor imagery (Left vs Right hand)
-* **Evaluation:** **Cross-subject split**
+* **Evaluation:** Cross-subject split
 
   * Train: Subjects 1–6
   * Test: Subjects 7–9
@@ -37,12 +36,13 @@ Raw EEG → Preprocessing → Model → Evaluation
 ### Preprocessing:
 
 * Bandpass filtering: **8–30 Hz (Mu & Beta bands)**
-* Normalization (based on training data)
-* Optional data augmentation:
+* Normalization (training statistics)
+* Data augmentation:
 
   * Gaussian noise
   * Time shifting
   * Amplitude scaling
+* Time window cropping: **0.5–3.5 sec**
 
 ---
 
@@ -50,8 +50,8 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ### 1. CSP + SVM
 
-* Handcrafted spatial filtering using Common Spatial Patterns
-* Features classified using Support Vector Machine
+* Handcrafted spatial filtering
+* Classical machine learning approach
 
 ---
 
@@ -59,109 +59,68 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 * Standard convolutional neural network
 * Learns features automatically
-* No EEG-specific design
+* No EEG-specific inductive bias
 
 ---
 
 ### 3. EEGNet
 
-* Lightweight CNN designed specifically for EEG
-* Learns:
-
-  * Temporal patterns (frequency)
-  * Spatial patterns (channel relationships)
+* Lightweight CNN designed for EEG
+* Learns temporal and spatial features
 
 ---
 
-##  Experiments Conducted
+##  Results
 
-### 🔹 Experiment 1: Baseline (0–4 sec window)
+###  Model Comparison
 
-| Model     | Accuracy |
-| --------- | -------- |
-| CSP + SVM | ~0.69    |
-| CNN       | ~0.49    |
-| EEGNet    | ~0.78    |
+![Model Comparison](images/modelcomparison.png)
 
----
+**Observation:**
 
-### 🔹 Experiment 2: Data Augmentation
-
-**Change introduced:**
-
-```python
-apply_aug = True
-```
-
-**Effect:**
-
-* Increased robustness to noise and variability
-
-| Model  | Result                  |
-| ------ | ----------------------- |
-| CNN    |  No improvement        |
-| EEGNet |  Improved (~0.85 peak) |
-| CSP    |  No change             |
+* EEGNet achieves the highest performance (~0.74)
+* CSP remains competitive (~0.71)
+* CNN fails (~0.48), indicating poor generalization
 
 ---
 
-### 🔹 Experiment 3: Time Window Cropping (0.5–3.5 sec)
+###  CNN Behavior (Failure Case)
 
-**Change introduced:**
+![CNN Accuracy](images/cnnaccuracy.png)
 
-```python
-tmin = 0.5
-tmax = 3.5
-```
+**Insight:**
 
-**Effect:**
+* Training accuracy increases to ~95%
+* Validation accuracy remains ~50%
+* Indicates **severe overfitting**
+* CNN learns subject-specific patterns instead of generalizable features
 
-* Removed noisy transition periods
-* Focused on stable motor imagery signals
+---
 
-| Model     | Accuracy |
-| --------- | -------- |
-| CSP + SVM | ~0.77  |
-| CNN       | ~0.49   |
-| EEGNet    | ~0.76    |
+### ✅ EEGNet Behavior (Successful Model)
+
+![EEGNet Accuracy](images/eegnetaccuracy.png)
+
+**Insight:**
+
+* Training and validation curves are closely aligned
+* Stable learning across epochs
+* Demonstrates strong generalization across subjects
 
 ---
 
 ##  Key Findings
 
-###  1. CNN fails in cross-subject setting
-
-* Severe overfitting observed
-* Performance remains near random (~50%)
-* Data augmentation does not help
-
----
-
-###  2. EEGNet shows strong generalization
-
-* Consistent performance across experiments
-* Benefits from augmentation
-* Learns meaningful EEG-specific patterns
-
----
-
-###  3. CSP remains competitive
-
-* Significant improvement with proper preprocessing
-* Sensitive to signal quality and time window selection
-
----
-
-###  4. Preprocessing matters
-
-* Bandpass filtering and time-window selection significantly affect performance
-* Proper signal conditioning can boost traditional methods
+* CNN fails in cross-subject EEG classification due to overfitting
+* EEGNet generalizes well due to domain-specific design
+* CSP remains competitive with proper preprocessing
+* Signal preprocessing significantly impacts performance
 
 ---
 
 ##  Core Insight
 
-> **Generic CNN models fail to generalize in cross-subject EEG classification, while EEGNet demonstrates robust performance due to its domain-specific architecture.**
+> Generic CNN models fail to generalize in cross-subject EEG classification, whereas EEGNet demonstrates robust performance due to its domain-specific architecture.
 
 ---
 
@@ -170,22 +129,22 @@ tmax = 3.5
 ```
 EEGNet-Project/
 │
-├── data_loader.py        # Loads EEG data, applies filtering, creates epochs
-├── preprocess.py         # Normalization, augmentation, preprocessing pipeline
-├── train.py              # Runs all experiments
-├── evaluate.py           # Visualization and comparison
+├── images/
+│   ├── cnnaccuracy.png
+│   ├── eegnetaccuracy.png
+│   ├── modelcomparison.png
 │
 ├── models/
-│   ├── csp_svm.py        # CSP + SVM implementation
-│   ├── cnn.py            # Generic CNN baseline
-│   ├── eegnet.py         # EEGNet implementation
-│
+├── data_loader.py
+├── preprocess.py
+├── train.py
+├── evaluate.py
 └── README.md
 ```
 
 ---
 
-##  How to Run
+## ▶️ How to Run
 
 ```bash
 python train.py
@@ -195,23 +154,11 @@ python train.py
 
 ##  Future Work
 
-* Evaluate on additional EEG datasets (e.g., PhysioNet, DEAP)
-* Improve CNN architecture for better generalization
-* Explore transformer-based EEG models
-* Investigate domain adaptation techniques
+* Evaluate on additional EEG datasets
+* Improve CNN generalization
+* Explore transformer-based models
+* Study domain adaptation techniques
 
 ---
 
-##  Final Note
-
-This project focuses on **understanding model behavior**, not just maximizing accuracy.
-
-It highlights the importance of:
-
-* domain-specific architectures
-* proper preprocessing
-* and rigorous experimental design
-
----
-
- *Designed as a research-oriented study for BCI and EEG decoding.*
+ *This project focuses on understanding model behavior and generalization in EEG decoding.*
