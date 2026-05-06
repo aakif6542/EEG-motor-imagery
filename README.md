@@ -34,6 +34,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 ```
 
 
+
 ### Preprocessing:
 
 * Bandpass filtering: **8–30 Hz (Mu & Beta bands)**
@@ -49,7 +50,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ##  Models Compared
 
-![Model Comparison](images/modelcomparison.png)
+![Model Comparison](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/modelcomparison.png)
 
 ### 1. CSP + SVM
 
@@ -64,7 +65,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 * Learns features automatically
 * No EEG-specific inductive bias
 
-![CNN Accuracy](images/cnnaccuracy.png)
+![CNN Accuracy](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/cnnaccuracy.png)
 
 ---
 
@@ -73,7 +74,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 * Lightweight CNN designed for EEG
 * Learns temporal and spatial features
 
-![EEGNet Accuracy](images/eegnetaccuracy.png)
+![EEGNet Accuracy](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/eegnetaccuracy.png)
 
 ---
 
@@ -81,7 +82,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ###  Model Comparison
 
-![Model Comparison](images/modelcomparison.png)
+![Model Comparison](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/modelcomparison.png)
 
 **Observation:**
 
@@ -93,7 +94,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ###  CNN Behavior (Failure Case)
 
-![CNN Accuracy](images/cnnaccuracy.png)
+![CNN Accuracy](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/cnnaccuracy.png)
 
 **Insight:**
 
@@ -106,7 +107,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ### ✅ EEGNet Behavior (Successful Model)
 
-![EEGNet Accuracy](images/eegnetaccuracy.png)
+![EEGNet Accuracy](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/eegnetaccuracy.png)
 
 **Insight:**
 
@@ -132,6 +133,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 ---
 
 ##  Project Structure
+
 
 
 ```
