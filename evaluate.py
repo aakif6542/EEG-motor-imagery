@@ -100,3 +100,5 @@ def evaluate_all(
     if results:
         compare_models(results)
         save_results(results)
+
+    plt.show(block=True)
