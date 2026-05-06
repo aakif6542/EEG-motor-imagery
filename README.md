@@ -74,7 +74,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ###  Model Comparison
 
-![Model Comparison](images/modelcomparison.png)
+![Model Comparison](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/modelcomparison.png)
 
 **Observation:**
 
@@ -86,7 +86,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ###  CNN Behavior (Failure Case)
 
-![CNN Accuracy](images/cnnaccuracy.png)
+![CNN Accuracy](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/cnnaccuracy.png)
 
 **Insight:**
 
@@ -99,7 +99,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ### ✅ EEGNet Behavior (Successful Model)
 
-![EEGNet Accuracy](images/eegnetaccuracy.png)
+![EEGNet Accuracy](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/eegnetaccuracy.png)
 
 **Insight:**
 
