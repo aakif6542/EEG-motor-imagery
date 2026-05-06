@@ -80,7 +80,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ###  Model Comparison
 
-![Model Comparison](images/modelcomparison.png)
+![Model Comparison](./images/modelcomparison.png)
 
 **Observation:**
 
@@ -92,7 +92,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ###  CNN Behavior (Failure Case)
 
-![CNN Accuracy](images/cnnaccuracy.png)
+![CNN Accuracy](./images/cnnaccuracy.png)
 
 **Insight:**
 
@@ -105,7 +105,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ### ✅ EEGNet Behavior (Successful Model)
 
-![EEGNet Accuracy](images/eegnetaccuracy.png)
+![EEGNet Accuracy](./images/eegnetaccuracy.png)
 
 **Insight:**
 
