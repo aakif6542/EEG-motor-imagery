@@ -33,8 +33,6 @@ We conduct a **controlled experimental comparison** between:
 Raw EEG → Preprocessing → Model → Evaluation
 ```
 
-
-
 ### Preprocessing:
 
 * Bandpass filtering: **8–30 Hz (Mu & Beta bands)**
@@ -50,8 +48,6 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ##  Models Compared
 
-![Model Comparison](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/modelcomparison.png)
-
 ### 1. CSP + SVM
 
 * Handcrafted spatial filtering
@@ -65,8 +61,6 @@ Raw EEG → Preprocessing → Model → Evaluation
 * Learns features automatically
 * No EEG-specific inductive bias
 
-![CNN Accuracy](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/cnnaccuracy.png)
-
 ---
 
 ### 3. EEGNet
@@ -74,15 +68,13 @@ Raw EEG → Preprocessing → Model → Evaluation
 * Lightweight CNN designed for EEG
 * Learns temporal and spatial features
 
-![EEGNet Accuracy](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/eegnetaccuracy.png)
-
 ---
 
 ##  Results
 
 ###  Model Comparison
 
-![Model Comparison](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/modelcomparison.png)
+![Model Comparison](images/modelcomparison.png)
 
 **Observation:**
 
@@ -94,7 +86,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ###  CNN Behavior (Failure Case)
 
-![CNN Accuracy](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/cnnaccuracy.png)
+![CNN Accuracy](images/cnnaccuracy.png)
 
 **Insight:**
 
@@ -107,7 +99,7 @@ Raw EEG → Preprocessing → Model → Evaluation
 
 ### ✅ EEGNet Behavior (Successful Model)
 
-![EEGNet Accuracy](https://github.com/aakif6542/EEG-motor-imagery/raw/main/images/eegnetaccuracy.png)
+![EEGNet Accuracy](images/eegnetaccuracy.png)
 
 **Insight:**
 
@@ -133,8 +125,6 @@ Raw EEG → Preprocessing → Model → Evaluation
 ---
 
 ##  Project Structure
-
-
 
 ```
 EEGNet-Project/
@@ -171,4 +161,4 @@ python train.py
 
 ---
 
- *This project focuses on understanding model behavior and generalization in EEG decoding.*
+*This project focuses on understanding model behavior and generalization in EEG decoding.*
