@@ -1,4 +1,27 @@
 __pycache__/
 *.py[cod]
+*.pyc
 *$py.class
-results.txt
+
+# Results (auto-generated, large files)
+results/
+datasets_cache/
+*.h5
+*.keras
+*.ckpt
+
+# MOABB data cache
+~/mne_data/
+mne_data/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
