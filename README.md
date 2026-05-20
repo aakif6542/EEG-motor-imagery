@@ -12,6 +12,10 @@ A persistent challenge in MI-BCI research is **cross-subject generalization**: m
 
 This framework provides a **standardized benchmarking environment** to systematically compare classification approaches under identical preprocessing, augmentation, and evaluation conditions — enabling fair, reproducible comparisons across datasets and model families.
 
+<p align="center">
+  <img src="results/final_results/figures/cross_dataset_accuracy_comparison.png" alt="Cross-Dataset Accuracy Comparison" width="800" />
+</p>
+
 ---
 
 ## Key Features
@@ -36,7 +40,7 @@ All datasets are loaded automatically via [MOABB](https://moabb.neurotechx.com/)
 | **PhysioNet MI** | 109 | 64 | 160 Hz | Left / Right fist | Goldberger et al., 2000 |
 | **Cho2017** | 52 | 64 | 512 Hz | Left / Right hand | Cho et al., 2017 |
 
-All datasets are reduced to **binary classification** (left vs. right) for consistent benchmarking. Data is bandpass filtered to 8–30 Hz (mu + beta bands) and resampled to 128 Hz for cross-dataset consistency.
+All datasets are reduced to **binary classification** (left vs. right) for consistent benchmarking. Data is bandpass filtered to 8–30 Hz (mu + beta rhythms) and resampled to 128 Hz for cross-dataset consistency.
 
 ---
 
@@ -62,7 +66,7 @@ A lightweight convolutional-transformer hybrid (Song et al., 2023). Combines a *
 MOABB Dataset
     │
     ▼
-Bandpass Filter (8–30 Hz, mu + beta bands)
+Bandpass Filter (8–30 Hz, mu + beta rhythms)
     │
     ▼
 Resampling (128 Hz, cross-dataset consistency)
@@ -139,74 +143,15 @@ Benchmark results from cross-subject evaluation (disjoint train/test subject gro
 
 ## Visualizations
 
-The framework automatically generates publication-quality figures. Below are key outputs from the latest benchmark run.
+### Cross-Subject Generalization Heatmap (Accuracy)
+<p align="center">
+  <img src="results/final_results/figures/cross_dataset_heatmap_accuracy.png" alt="Accuracy Heatmap" width="600" />
+</p>
 
-### Cross-Dataset Accuracy Comparison
-![Cross-Dataset Accuracy Comparison](results/final_results/figures/cross_dataset_accuracy_comparison.png)
-
-### Cross-Dataset F1 Comparison
-![Cross-Dataset F1 Comparison](results/final_results/figures/cross_dataset_f1_comparison.png)
-
-### Accuracy Heatmap (Models × Datasets)
-![Accuracy Heatmap](results/final_results/figures/cross_dataset_heatmap_accuracy.png)
-
-### F1 Heatmap (Models × Datasets)
-![F1 Heatmap](results/final_results/figures/cross_dataset_heatmap_f1.png)
-
-### Per-Dataset Model Comparisons
-
-<details>
-<summary>BNCI2014001</summary>
-
-![BNCI2014001 Accuracy Comparison](results/final_results/figures/BNCI2014001_model_comparison_accuracy.png)
-![BNCI2014001 Multi-Metric](results/final_results/figures/BNCI2014001_multi_metric.png)
-
-</details>
-
-<details>
-<summary>PhysioNet MI</summary>
-
-![PhysioNet MI Accuracy Comparison](results/final_results/figures/PhysionetMI_model_comparison_accuracy.png)
-![PhysioNet MI Multi-Metric](results/final_results/figures/PhysionetMI_multi_metric.png)
-
-</details>
-
-<details>
-<summary>Cho2017</summary>
-
-![Cho2017 Accuracy Comparison](results/final_results/figures/Cho2017_model_comparison_accuracy.png)
-![Cho2017 Multi-Metric](results/final_results/figures/Cho2017_multi_metric.png)
-
-</details>
-
-### Training Curves
-
-<details>
-<summary>EEGNet Training Curves</summary>
-
-![EEGNet - BNCI2014001](results/final_results/figures/BNCI2014001_EEGNet_training_curves.png)
-![EEGNet - Cho2017](results/final_results/figures/Cho2017_EEGNet_training_curves.png)
-![EEGNet - PhysioNet MI](results/final_results/figures/PhysionetMI_EEGNet_training_curves.png)
-
-</details>
-
-<details>
-<summary>EEG Conformer Training Curves</summary>
-
-![EEG Conformer - BNCI2014001](results/final_results/figures/BNCI2014001_EEGConformer_training_curves.png)
-![EEG Conformer - Cho2017](results/final_results/figures/Cho2017_EEGConformer_training_curves.png)
-![EEG Conformer - PhysioNet MI](results/final_results/figures/PhysionetMI_EEGConformer_training_curves.png)
-
-</details>
-
-<details>
-<summary>CNN Training Curves (Overfitting)</summary>
-
-![CNN - BNCI2014001](results/final_results/figures/BNCI2014001_CNN_training_curves.png)
-![CNN - Cho2017](results/final_results/figures/Cho2017_CNN_training_curves.png)
-![CNN - PhysioNet MI](results/final_results/figures/PhysionetMI_CNN_training_curves.png)
-
-</details>
+### EEGNet Training Dynamics (BNCI2014001)
+<p align="center">
+  <img src="results/final_results/figures/BNCI2014001_EEGNet_training_curves.png" alt="EEGNet Training Curves" width="800" />
+</p>
 
 ---
 
@@ -230,7 +175,7 @@ EEGNet-Project/
 │   ├── csp_svm.py                  # CSP + SVM (classical ML)
 │   ├── cnn.py                      # Generic 3-block CNN
 │   ├── eegnet.py                   # EEGNet (Lawhern et al., 2018)
-│   └── eeg_conformer.py           # EEG Conformer (Song et al., 2023)
+│   └── eeg_conformer.py            # EEG Conformer (Song et al., 2023)
 │
 ├── preprocessing/
 │   └── pipeline.py                 # Normalization + augmentation pipeline
@@ -240,11 +185,11 @@ EEGNet-Project/
 │
 ├── evaluation/
 │   ├── metrics.py                  # Accuracy, Precision, Recall, F1
-│   └── visualization.py           # Publication-quality plot generation
+│   └── visualization.py            # Publication-quality plot generation
 │
 ├── utils/
 │   ├── io_utils.py                 # File I/O, model serialization
-│   └── logging_config.py          # Centralized logging setup
+│   └── logging_config.py           # Centralized logging setup
 │
 ├── scripts/
 │   ├── regenerate_plots.py        # Re-generate figures from saved metrics
@@ -257,7 +202,7 @@ EEGNet-Project/
 │   │   ├── metrics/               # Per-model JSON metric files
 │   │   ├── plots/                 # Raw visualization outputs
 │   │   └── tables/                # CSV & LaTeX summary tables
-│   └── final_results/            # Consolidated results
+│   └── final_results/             # Consolidated results
 │       ├── figures/               # Publication-quality figures
 │       ├── metrics/               # Aggregated metric files
 │       ├── summaries/             # Experiment summaries
