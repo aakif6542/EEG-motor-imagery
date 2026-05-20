@@ -1,6 +1,20 @@
-# Cross-Subject EEG Motor Imagery Benchmarking Framework
+# Cross-Subject EEG Motor Imagery Benchmarking Framework for Multi-Dataset BCI Evaluation
 
-A modular, reproducible benchmarking framework for evaluating classical and deep learning approaches to **cross-subject EEG motor imagery classification** across multiple public BCI datasets.
+Benchmarking CSP-SVM, CNN, EEGNet, and EEG Conformer models for cross-subject EEG motor imagery classification across multiple public BCI datasets.
+
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)
+![MOABB](https://img.shields.io/badge/MOABB-EEG-green)
+![License](https://img.shields.io/badge/License-Research-red)
+
+## Highlights
+
+- 3 public EEG motor imagery datasets
+- 4 benchmark models (CSP-SVM, CNN, EEGNet, EEG Conformer)
+- Cross-subject evaluation pipeline
+- Automated benchmarking and visualization
+- Publication-quality figures
+- Modular and extensible architecture
 
 ---
 
@@ -141,7 +155,7 @@ Benchmark results from cross-subject evaluation (disjoint train/test subject gro
 
 ---
 
-## Visualizations
+## Benchmark Visualizations
 
 ### Cross-Subject Generalization Heatmap (Accuracy)
 <p align="center">
@@ -225,8 +239,8 @@ EEGNet-Project/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/EEGNet-Project.git
-cd EEGNet-Project
+git clone https://github.com/aakif6542/EEG-motor-imagery.git
+cd EEG-motor-imagery
 
 # Install dependencies
 pip install -r requirements.txt
